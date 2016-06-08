@@ -1,0 +1,113 @@
+.container{
+	overflow: hidden;
+}
+.bar{
+	overflow: hidden;
+	border-bottom: 1px #CECECE solid;
+}
+.bar li{
+	display: block;
+	float: left;
+	width: 80px;
+	height: 50px;
+	font-size: 16px;
+	line-height: 50px;
+	cursor: pointer;
+}
+.bar_active{
+    color: #4FDCC6;
+}
+.list{
+    margin-top: 30px;
+    min-height: auto;
+    position: relative;
+}
+.box{
+	position: relative;
+    float: left;
+}
+.content{
+	width: 330px;
+    border: 1px #D7D7D7 solid;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+.content h3{
+	line-height: 40px;
+	font-size: 18px;
+	font-weight: bolder;
+	padding: 0 15px;
+}
+.content .c_img{
+	position: relative;
+	width: 100%;
+	height: 240px;
+}
+.c_img img{
+	width: 100%;
+	height: 240px;
+	cursor: pointer;
+}
+.c_img .float{
+    position: absolute;
+    z-index: 200;
+    display: block;
+    width: 100%;
+    height: 50px;
+    bottom: 0px;
+    background: rgba(51, 51, 53, 0.35);
+    background: -webkit-linear-gradient(top, rgba(51, 51, 53, 0.2) 0%,rgba(51, 51, 53, 0.2) 60%),-webkit-linear-gradient(20deg, rgba(51, 51, 53, 0.5) 0%, rgba(51, 51, 53, 0) 35%);
+    filter: progid:DXImageTransform.Microsoft.Gradient(startColorstr=#44000000,endColorstr=#44000000);
+}
+.c_img h3{
+    text-align: center;
+    color: white;	
+}
+.content hr{
+	height: 1px;
+	line-height: 1px;
+	background-color: #EFEFEF;
+}
+.content p{
+	margin-bottom: 10px;
+	padding:5px 15px;
+}
+.content span{
+	display: block;
+	float: left;
+	width: 20px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	cursor: pointer;
+}
+.content .agree_num{
+	color: red;
+}
+.content .s_agree{
+	width: 40px;
+    background: url('../image/notclick.png') no-repeat scroll center center transparent;
+}
+.content .comment{
+	width: 40px;
+	background: url('../image/comment.png') no-repeat scroll center center transparent;
+}
+.content .share{
+	width: 40px;
+	background: url('../image/share.png') no-repeat scroll center center transparent;
+}
+.container .bot_line{
+	clear: both;
+	height: 1px;
+	line-height: 1px;
+	background-color: #EFEFEF;
+	margin-top: 5px;
+}
+.noMore{
+	text-align: center;
+	margin-top: 10px;
+}
+.noMore img{
+	cursor: pointer;
+}

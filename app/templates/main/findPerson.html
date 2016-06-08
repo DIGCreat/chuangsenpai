@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>findPerson</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='./css/base.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='./css/findPerson.css') }}">
+	<script src="{{ url_for('static', filename='./js/jquery-1.10.2.min.js') }}"></script>
+</head>
+<body>
+	<header>
+	    <div class="header">
+	        <div class="left">
+				<div class="logo left"><a href="{{ url_for('main.index') }}"><img src="{{ url_for('static', filename='./image/logo.png') }}" alt="logo" /></a></div>
+                <ul class="nav left">
+					<li><a href="{{ url_for('main.findPerson') }}">找人</a></li>
+					<li><a href="{{ url_for('main.findTeam') }}">找团队</a></li>
+					<li><a href="{{ url_for('main.findActivity') }}">活动</a></li>
+					<li><a href="{{ url_for('main.info_news') }}">资讯</a></li>
+					<li><a href="{{ url_for('main.person_team') }}">个人</a></li>
+               </ul>
+	        </div>
+	        <div class="right">
+	            <div class="login right">
+	                <span id="login">登录<img src="" alt="头像" /></span>
+	            </div>
+                <div class="message right">
+                    <span></span>
+                </div>
+                <div class="form right">
+                     <input class="search" type="text" maxlength="100" placeholder="请输入想要搜索的内容" autocomplete="off" />  
+                     <input class="btn_search" type="submit" value="" />   
+                </div>
+	        </div>
+	    </div>
+	</header>
+	<div class="wrap container">
+	    <div class="filter">
+	        <h3>人才聚集地</h3>
+	        <div class="type">
+                <div class="left">
+                    <span class="s_type">类别：</span>
+                    <span class="all">全部</span>
+                </div>
+                <ul>
+                	<li>技术类（软件）</li>
+                	<li>技术类（硬件）</li>
+                	<li>经济与管理类</li>
+                	<li>传媒类</li>
+                	<li>法务类</li>
+                	<li>其他</li>
+                </ul>
+	        </div>
+	        <div class="specialty">
+                <div class="s_left">
+                    <span class="s_type">特长：</span>
+                    <span class="all">全部</span>
+                </div>
+                <div class="label left">
+                    <span>MangoDB</span>
+                    <span>Premiere</span>
+                    <span>Photoshop</span>
+                    <span>大数据</span>
+                    <span>SQL Sever</span>
+                    <span>Mysql</span>
+                    <span>数据结构</span>
+                    <span>Python</span>
+                    <span>linux</span>
+                    <span>JAVA</span>
+                    <span>PHP</span>
+                    <span>前端工具</span>
+                    <span>JavaScript</span>
+                    <span>CSS3</span>
+                    <span>Bootstrap</span>
+                    <span>Html5</span>
+                    <span>WebApp</span>
+                    <span>jQuery</span>
+                    <span>AngularJS</span>
+                    <span>Node.js</span>
+                </div>
+	        </div>
+	        <div class="bar">
+	            <span>最新</span>
+	            <span>最热</span>
+	        </div>
+	    </div>
+	    <div class="list">
+	        <ul class="info_ul">
+	        	<li>
+	        	    <div class="show_btn">
+	        	        <div class="s_wrap">
+	        	            <button class="follow">关注</button>
+	        	            <button class="invite">留言邀请</button>
+	        	        </div>
+	        	    </div>
+	        	    <div class="background">
+						<img src="{{ url_for('static', filename='./image/myhead.jpg') }}" alt="user" />
+	        	        <p class="name">梅西</p>
+	        	        <p class="career">web前端工程师</p>
+	        	    </div>
+	        	    <div class="u_lable">
+	        	        <span>Html5</span>
+	        	        <span>jquery</span>
+	        	    </div>
+	        	    <p class="introduce">
+	        	        自我介绍是向别人展示你自己的一个重要手段，自我介绍好不好，甚至直接关系到你给别人的第一印象的好坏及以后交往的顺利与否
+	        	    </p>
+	        	</li>
+	        	<li>
+	        	    <div class="show_btn">
+	        	        <div class="s_wrap">
+	        	            <button class="follow">关注</button>
+	        	            <button class="invite">留言邀请</button>
+	        	        </div>
+	        	    </div>
+	        	    <div class="background">
+						<img src="{{ url_for('static', filename='./image/myhead.jpg') }}" alt="user" />
+	        	        <p class="name">梅西</p>
+	        	        <p class="career">web前端工程师</p>
+	        	    </div>
+	        	    <div class="u_lable">
+	        	        <span>Html5</span>
+	        	        <span>jquery</span>
+	        	    </div>
+	        	    <p class="introduce">
+	        	        自我介绍是向别人展示你自己的一个重要手段，自我介绍好不好，甚至直接关系到你给别人的第一印象的好坏及以后交往的顺利与否
+	        	    </p>
+	        	</li>
+	        	<li>
+	        	    <div class="show_btn">
+	        	        <div class="s_wrap">
+	        	            <button class="follow">关注</button>
+	        	            <button class="invite">留言邀请</button>
+	        	        </div>
+	        	    </div>
+	        	    <div class="background">
+						<img src="{{ url_for('static', filename='./image/myhead.jpg') }}" alt="user" />
+	        	        <p class="name">梅西</p>
+	        	        <p class="career">web前端工程师</p>
+	        	    </div>
+	        	    <div class="u_lable">
+	        	        <span>Html5</span>
+	        	        <span>jquery</span>
+	        	    </div>
+	        	    <p class="introduce">
+	        	        自我介绍是向别人展示你自己的一个重要手段，自我介绍好不好，甚至直接关系到你给别人的第一印象的好坏及以后交往的顺利与否
+	        	    </p>
+	        	</li>
+	        </ul>
+            <div class="setNum" id="setNum"></div>
+	    </div>
+	</div>
+	<div class="side">
+         <ul>
+			 <li><a href=""><img src="{{ url_for('static', filename='./image/weixinFloat.png') }}" alt="" /></a></li>
+			 <li><a href=""><img src="{{ url_for('static', filename='./image/newsFloat.png') }}" alt="" /></a></li>
+			 <li><a href=""><img src="{{ url_for('static', filename='./image/phoneFloat.png') }}" alt="" /></a></li>
+			 <li id="getTop"><img src="{{ url_for('static', filename='./image/backTopFloat.png') }}" alt="" /></li>
+         </ul>
+	</div>
+	<footer>
+	    <div class="footer">
+	        <div class="wrap">
+	            <ul class="f_contact left">
+	    	        <li><a href="">关于我们</a></li>
+	    	        <li><a href="">联系我们</a></li>
+	    	        <li><a href="">意见反馈</a></li>
+	            </ul>
+	            <ul class="f_share right">
+					<li><a href=""><img src="{{ url_for('static', filename='./image/weibo.png') }}" alt="weibo" /></a></li>
+					<li><a href=""><img src="{{ url_for('static', filename='./image/weixin.png') }}" alt="weixin" /></a></li>
+					<li><a href=""><img src="{{ url_for('static', filename='./image/qqSpace.png') }}" alt="qone" /></a></li>
+	            </ul>
+	        </div>
+	    </div>
+	</footer>
+	<script type="text/javascript" src="{{ url_for('static', filename='./js/findPerson.js') }}"></script>
+</body>
+</html>

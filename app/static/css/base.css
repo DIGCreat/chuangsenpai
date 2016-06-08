@@ -1,0 +1,175 @@
+*,body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td {
+	padding: 0px;
+	margin: 0px;
+	border:none;
+	outline: none;
+}
+body{ font: 14px/1.5 '\5fae\8f6f\96c5\9ed1', Arial,Tahoma, sans-serif; }
+ul{ list-style: none; }
+a{ text-decoration: none; outline: none;-moz-outline:none;}
+button{
+	cursor: pointer;
+}
+input::-ms-clear{
+   display: none;
+}
+input{
+   -webkit-appearance:none;
+}
+/*all*/
+.left{
+	float: left;
+}
+.right{
+	float: right;
+}
+.wrap{
+	width: 1200px;
+	margin: 0 auto;
+}
+.nav_active{
+    background-color: #FFB901;
+}
+/*header*/
+.header{
+   width: 100%;
+   height: 60px;
+   background-color: black;
+   overflow: hidden;
+}
+.header .right{
+	overflow: hidden;
+}
+.logo{
+	width: 130px;
+	height: 60px;
+	margin-left: 20px;
+}
+.logo img{
+	margin-top: 10px;
+    width: 130px;
+    height: 40px;
+}
+.nav li{
+    display: inline-block;
+    width: 100px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    cursor: pointer;
+}
+.nav li a{
+	color: white;
+}
+.nav li:hover{
+	background-color: #FFB901;
+}
+.form{
+	position: relative;
+    width: 240px;
+    height: 50px;
+    line-height: 60px;
+    margin-right: 10px;
+    border-bottom: 1px #b3b3b3 solid;
+}
+.form .search{
+	clear:both;
+	width: 210px;
+	height: 40px;
+	line-height: 40px;
+	padding: 0px 5px;
+	background-color: transparent;
+	border:none;
+	outline: none;
+	-moz-outline:none;
+	color: white;
+	box-sizing: border-box;
+}
+.form .btn_search{
+	position: absolute;
+	width: 20px;
+	height: 38px;
+	top:50%;
+	margin-top: -12px;
+	outline: none;
+	border: none;
+	background:url('../image/not_search.png') no-repeat scroll center center #000;
+	cursor: pointer;
+}
+.form .btn_search:hover{
+	background:url('../image/search.png') no-repeat scroll center center #000;
+}
+.login,.message{
+	width: 50px;
+	height: 60px;
+	line-height: 60px;
+	text-align: center;
+	cursor: pointer;
+}
+.message span{
+	display: block;
+	width: 30px;
+	height: 30px;
+	margin:15px auto 0 auto;
+	vertical-align:middle;
+	background:url('../image/no_message.png') no-repeat scroll center center #000;
+} 
+.message span:hover{
+	background:url('../image/message.png') no-repeat scroll center center #000;
+}
+.login{
+	margin-right: 20px;
+}
+.login span{
+    color: #b3b3b3; 
+}
+.login span:hover{
+	color:white;
+}
+.login span img{
+	width: 30px;
+	height: 30px;
+	margin-top: 15px;
+} 
+/*side*/
+.side{
+	position: fixed;
+	right: 5px;
+	top: 200px;
+}
+.side ul li{
+    width: 50px;
+    height: 50px;
+    margin-top: 2px;
+    cursor: pointer;
+}
+/*footer*/
+footer{
+	background-color: black;
+}
+.footer{
+	height: 100px;
+	background-color: black;
+	margin-top: 50px;
+}
+.footer ul{
+	overflow: hidden;
+}
+.footer ul li{
+	display: inline-block;
+	height: 100px;
+	text-align: center;
+}
+.f_contact li{
+	line-height: 100px;
+	width: 100px;
+}
+.f_contact li a{
+    color: white;
+}
+.f_share li{
+    width: 60px;
+}
+.f_share img{
+	margin-top: 40px;
+}

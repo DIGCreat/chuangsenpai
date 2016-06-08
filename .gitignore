@@ -1,0 +1,6 @@
+*.py[co]
+~*
+*.ini
+run.sh
+venv/
+logs/
