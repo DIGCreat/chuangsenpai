@@ -90,6 +90,7 @@ class Message(db.Model):
     '''
     留言信息表
     '''
+    __tablename__ = 'messages'
     id = db.Column(db.Integer, primary_key=True)
     msgbody = db.Column(db.Text)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
@@ -98,6 +99,65 @@ class Message(db.Model):
 
     def __repr__(self):
         return '<message %r>' % self.msgbody
+
+
+class CollectPost(db.Model):
+    '''
+    用户收藏文章的关联表
+    '''
+    __tablename__ = 'collectposts'
+    user_id = db.Column(db.Integer,
+                        db.ForeignKey('users.id'),
+                        primary_key=True)
+    post_id = db.Column(db.Integer,
+                        db.ForeignKey('posts.id'),
+                        primary_key=True)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+
+
+class Post(db.Model):
+    '''
+    保存发表的文章
+    '''
+    __tablename__ = 'posts'
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(128), index=True)
+    author = db.Column(db.String(128), index=True)
+    body_html = db.Column(db.Text)
+    like = db.Column(db.Integer)
+    timestamp = db.Column(db.DateTime,
+                          default=datetime.utcnow, index=True)
+
+    collectusers = db.relationship('CollectPost',
+                                   foreign_keys=[CollectPost.post_id],
+                                   backref=db.backref('post', lazy="joined"),
+                                   lazy='dynamic',
+                                   cascade='all, delete-orphan')
+
+    def __repr__(self):
+        return '<post %r>' % self.title
+
+
+class Activity(db.Model):
+    '''
+    记录用户发表的活动
+    '''
+    __tablename__ = 'activities'
+    id = db.Column(db.Integer, primary_key=True)
+    act_name = db.Column(db.String(128), index=True)
+    location = db.Column(db.String(128), index=True)
+    timestamp = db.Column(db.DateTime, default=datetime.utcmow,
+                          index=True)
+    summary = db.Column(db.String(256))
+    details = db.Column(db.Text)
+    like = db.Column(db.Integer)
+
+    sponsor_id = db.Column(db.Integer,
+                           db.ForeignKey('users.id'),
+                           index=True)
+
+    def __repr__(self):
+        return '<activity %r>' % self.act_name
 
 
 class User(db.Model):
@@ -165,6 +225,12 @@ class User(db.Model):
                                   backref=db.backref('recv', lazy='joined'),
                                   lazy='dynamic',
                                   cascade='all, delete-orphan')
+    collectpost = db.relationship('CollectPost',
+                                  foreign_keys=[CollectPost.user_id],
+                                  backref=db.backref('user', lazy="joined"),
+                                  lazy='dymanic',
+                                  cascade='all, delete-orphan')
+    myactivities = db.relationship('Activity', backref='sponsor', lazy='dymanic')
     #kind
 
 
