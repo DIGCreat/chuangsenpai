@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>登陆测试</title>
+<script type="text/javascript"
+src="http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+$(function(){
+		$('button#submit').bind('click',function(){
+			$.post(
+				$SCRIPT_ROOT + '/auth/register',
+				{user: $('input[name="email"]').val(),
+                 pwd: $('input[name="password"]').val()},
+                function(data){$('div#result').text(data.user); console.log(data)},
+                "json");
+		});
+});
+$(function(){
+		$('button#loginsubmit').bind('click',function(){
+			$.post(
+				$SCRIPT_ROOT + '/auth/login',
+				{user: $('input[name="logemail"]').val(),
+                 pwd: $('input[name="logpassword"]').val()},
+                function(data){$('div#result').text(data.success);console.log(data)},
+                "json");
+		});
+});
+</script>
+</head>
+<body>
+<h1>Test Register</h1>
+<div>
+	Email:<input type='email' name='email'> <br />
+	Password:<input type="password" name='password'> <br />
+	<button type='button' id="submit">提交</button>
+</div>
+<h1>Test Login</h1>
+<div>
+	Email:<input type='email' name='logemail'> <br />
+	Password:<input type="password" name='logpassword'> <br />
+	<button type='button' id="loginsubmit">提交</button>
+</div>
+<div id="result"></div>
+</body>
+</html>

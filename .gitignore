@@ -1,6 +1,8 @@
 *.py[co]
 ~*
 *.ini
+*.swp
 run.sh
 venv/
 logs/
+migrations/

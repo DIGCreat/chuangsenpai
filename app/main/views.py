@@ -1,8 +1,9 @@
 # -*- coding:utf8 -*-
 
 import json
-from . import main
+from ..main import main
 from flask import render_template, jsonify, url_for, request
+from flask.ext.login import current_user, login_required
 
 @main.route('/')
 def index():
