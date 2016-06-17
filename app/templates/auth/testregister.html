@@ -42,6 +42,19 @@ $(function(){
 	Password:<input type="password" name='logpassword'> <br />
 	<button type='button' id="loginsubmit">提交</button>
 </div>
+
+{% if current_user.is_authenticated %}
+{{ current_user.username }}
+{% else %}
+please login
+{% endif %}
+<div>
+	<form action='{{ url_for("main.upload") }}' method='post' enctype='multipart/form-data'>
+    <input type='file' name='uploaded_file'>
+    <input type='submit' value='Upload'>
+    </form>
+</div>
+<img src="{{ url }}" alt="" width="50%" height="50%">
 <div id="result"></div>
 </body>
 </html>

@@ -68,7 +68,9 @@ def register():
 
 @auth.route("/testRegister")
 def testRegister():
-    return render_template('auth/testregister.html')
+    if current_user.is_authenticated:
+        url = current_user.head_pic_path
+    return render_template('auth/testregister.html', url=url)
 
 @auth.route('/confirm/<token>')
 @login_required

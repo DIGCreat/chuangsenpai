@@ -78,7 +78,13 @@
 	            <p>这里是一片对大标题的解释，应该更加详细介绍应该更加详细介绍应该更加详细介绍</p>
 				<img id="part3_clock" src="{{ url_for('static', filename='./image/part_clock.png') }}" alt="part3" />
 	        </div>
-			<img id="part3_all" src="{{ url_for('static', filename='./image/part3_all.png') }}" alt="part3" />
+	       <div class="part3_img">
+	           <img id="part3_new" src="/static/image/part3_new.png" alt="" />
+	           <img id="part3_good" src="/static/image/part3_good.png" alt="" />
+	           <img id="part3_bisai" src="/static/image/part3_bisai.png" alt="" />
+	           <img id="part3_zhaoxin" src="/static/image/part3_zhaoxin.png" alt="" />
+	           <img id="part3_page" src="/static/image/part3_page.png" alt="" /> 
+	       </div>
 	   </div>
 	   <div id="part4" class="part4 part">
 	      <h3>下载创森派，让人才资源对接更快速</h3>
@@ -106,5 +112,6 @@
 	    </div>
 	</footer>
 	<script type="text/javascript" src="{{ url_for('static', filename='./js/index.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='./js/common.js') }}"></script>
 </body>
 </html>
