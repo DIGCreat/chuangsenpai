@@ -6,7 +6,7 @@ from flask.ext.login import login_user, login_required, \
         logout_user, current_user
 from . import auth
 from .. import db
-from ..models import User
+from ..models import User, Team, Role
 from ..email import send_email
 
 @auth.route('/login', methods=['POST'])
@@ -21,13 +21,15 @@ def login():
         data['error'] = 0
         data["user_message"] = []
         i = 1
-        for msg in user.recv_msgs:
-            msg_data = {}
-            msg_data['id'] = i
-            msg_data['time'] = msg.timestamp
-            msg_data['content'] = msg.msgbody
-            data['user_message'].append(msg_data)
-            i += 1
+        recv_msgs = user.recv_msgs
+        if not (recv_msgs is None):
+            for msg in user.recv_msgs:
+                msg_data = {}
+                msg_data['id'] = i
+                msg_data['time'] = msg.timestamp
+                msg_data['content'] = msg.msgbody
+                data['user_message'].append(msg_data)
+                i += 1
         login_user(user, request.values.get('remember_me'))
         return jsonify(data)
     else:
@@ -68,9 +70,27 @@ def register():
 
 @auth.route("/testRegister")
 def testRegister():
+    url = ''
     if current_user.is_authenticated:
         url = current_user.head_pic_path
     return render_template('auth/testregister.html', url=url)
+
+@auth.route('/createTeam', methods=['POST'])
+@login_required
+def createTeam():
+    team_name = request.form.get('team_name')
+    team_avatar = request.form.get('img')
+    about_team = request.form.get('des')
+    if not Team.query.filter_by(team_name=team_name).first():
+        team = Team()
+        team.about_team = about_team
+        team.team_avatar = team_avatar
+        team.team_name = team_name
+        team.sponsor = current_user
+        db.session.add(team)
+        return jsonify({"success":0, "error":0})
+    else:
+        return jsonify({"success":1, "error": "team name exists"})
 
 @auth.route('/confirm/<token>')
 @login_required

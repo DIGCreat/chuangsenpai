@@ -151,11 +151,13 @@ class Activity(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     act_name = db.Column(db.String(128), nullable=False, index=True)
     location = db.Column(db.String(128), index=True)
+    pic_path = db.Column(db.String(256))
     timestamp = db.Column(db.DateTime, default=datetime.utcnow,
                           index=True)
     summary = db.Column(db.String(256))
     details = db.Column(db.Text)
     like = db.Column(db.Integer)
+    join_num = db.Column(db.Integer)
 
     sponsor_id = db.Column(db.Integer,
                            db.ForeignKey('users.id'),
@@ -164,6 +166,32 @@ class Activity(db.Model):
     def __repr__(self):
         return '<activity %r>' % self.act_name
 
+class JoinTeam(db.Model):
+    __tablename__='jointeam'
+    teammate_id = db.Column(db.Integer,
+                           db.ForeignKey('users.id'),
+                           primary_key=True)
+    team_id = db.Column(db.Integer,
+                        db.ForeignKey('teams.id'),
+                        primary_key=True)
+
+class Team(db.Model):
+    __tablename__ = 'teams'
+    id = db.Column(db.Integer, primary_key=True)
+    team_avatar = db.Column(db.String(256))
+    work = db.Column(db.String(128), index=True)
+    sponsor_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    team_name = db.Column(db.String(128), unique=True, index=True)
+    about_team = db.Column(db.Text)
+    timestamp = db.Column(db.DateTime,
+                          default=datetime.utcnow, index=True)
+
+    teammate = db.relationship('JoinTeam',
+                               foreign_keys=[JoinTeam.team_id],
+                               backref = db.backref('team',
+                                                   lazy='joined'),
+                               lazy='dynamic',
+                               cascade="all, delete-orphan")
 
 class User(UserMixin, db.Model):
 #    '''
@@ -205,6 +233,16 @@ class User(UserMixin, db.Model):
     member_since = db.Column(db.DateTime(), default=datetime.utcnow)
     last_seen = db.Column(db.DateTime(), default=datetime.utcnow)
     last_IP = db.Column(db.String(15))
+
+    myteam = db.relationship('Team',
+                             foreign_keys=[Team.sponsor_id],
+                             backref=db.backref('sponsor', lazy='joined'),
+                             lazy='dynamic',
+                             cascade='all, delete-orphan')
+    joined_team = db.relationship('JoinTeam',
+                                  foreign_keys=[JoinTeam.teammate_id],
+                                  backref=db.backref('teammate', lazy='joined'),
+                                  cascade='all, delete-orphan')
 
     followed = db.relationship('Follow',
                                foreign_keys=[Follow.follower_id],
