@@ -13,7 +13,7 @@ $(function(){
 				$SCRIPT_ROOT + '/auth/register',
 				{user: $('input[name="email"]').val(),
                  pwd: $('input[name="password"]').val()},
-                function(data){$('div#result').text(data.user); console.log(data)},
+				 function(data){$('div#registerresult').text('success:' + data.success + ' error:' + data.error); console.log(data)},
                 "json");
 		});
 });
@@ -23,58 +23,78 @@ $(function(){
 				$SCRIPT_ROOT + '/auth/login',
 				{user: $('input[name="logemail"]').val(),
                  pwd: $('input[name="logpassword"]').val()},
-                function(data){$('div#result').text(data.success);console.log(data)},
+                function(data){$('div#result').text('success:'+data.success);console.log(data)},
                 "json");
 		});
 });
 </script>
 </head>
 <body>
-<h1>Test Register</h1>
+<h4>Test Register</h4>
 <div>
 	Email:<input type='email' name='email'> <br />
 	Password:<input type="password" name='password'> <br />
 	<button type='button' id="submit">提交</button>
+	<div id="registerresult"></div>
 </div>
-<h1>Test Login</h1>
+<h4>Test Login</h4>
 <div>
 	Email:<input type='email' name='logemail'> <br />
 	Password:<input type="password" name='logpassword'> <br />
 	<button type='button' id="loginsubmit">提交</button>
 </div>
-
 {% if current_user.is_authenticated %}
 {{ current_user.username }}
+<br />头像：<br /><img src="{{ url }}" alt="" width="25%" height="25%">
 {% else %}
 please login
 {% endif %}
-<div>
+<div id="result"></div>
+<div style='margin-top:20px'>
+	进入个人详情页，需要登陆后才行<br />
+	<form action="{{ url_for('main.user', username=current_user.username) }}">
+		<input type="submit" value='about me'>
+	</form>
+</div>
+<div style="margin-top:20px">
 	<form action="{{ url_for('main.upload') }}" method='POST' enctype='multipart/form-data'>
+用户上传头像<br />
     <input type='file' name='uploaded_file'>
     <input type='submit' value='Upload' id='upload'>
 	</form>
 </div>
-<div>
+<div style='margin-top:20px'>
+	找人页POST方式请求:<br />
 	<form action="{{ url_for('main.findPerson') }}" method='POST'>
 	<input type="submit" value="findPersion">
 	</form>
 </div>
-<div>
+<div style='margin-top:20px'>
+	找队伍页POST方式请求：<br />
 	<form action="{{ url_for('main.findTeam') }}" method='POST'>
 	<input type="submit" value="findTeam">
 	</form>
 </div>
-<div>
+<div style='margin-top:20px'>
+	活动页POST方式请求:<br />
 	<form action="{{ url_for('main.findActivity') }}" method='POST'>
 	<input type="submit" value="findActivity">
 	</form>
 </div>
-<div>
+<div style='margin-top:20px'>
+	资讯页POST方式请求：<br />
 	<form action="{{ url_for('main.info_news') }}" method='POST'>
 	<input type="submit" value="info news">
 	</form>
 </div>
-<img src="{{ url }}" alt="" width="50%" height="50%">
-<div id="result"></div>
+<div style="margin-top:20px">
+	<h4>创建团队测试</h4>
+	<form action="{{ url_for('auth.createTeam') }}" method='POST'>
+		team name:<input type="text" name='team_name'>
+		team avatar:<input type='text' name='img'>
+		about team:<input type='text' name='des'>
+		<input type='submit' value='创建'>
+	</form>
+</div>
 </body>
 </html>

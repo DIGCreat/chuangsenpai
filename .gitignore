@@ -2,6 +2,7 @@
 ~*
 *.ini
 *.swp
+*.backup
 run.sh
 venv/
 logs/

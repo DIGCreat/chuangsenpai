@@ -3,21 +3,20 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>info_news</title>
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='./css/base.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='./css/info_news.css') }}">
-	<script src="{{ url_for('static', filename='./js/jquery-1.10.2.min.js') }}"></script>
+	<link rel="stylesheet" type="text/css" href="/static/css/base.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/findActivity.css">
+	<script src="/static/js/jquery-1.10.2.min.js"></script>
 </head>
 <body>
 	<header>
 	    <div class="header">
 	        <div class="left">
-				<div class="logo left"><a href="{{ url_for('main.index') }}"><img src="{{ url_for('static', filename='./image/logo.png') }}" alt="logo" /></a></div>
+				<div class="logo left"><a href="{{ url_for('main.index') }}"><img src="/static/image/logo.png" alt="logo" /></a></div>
                 <ul class="nav left">
 					<li><a href="{{ url_for('main.findPerson') }}">找人</a></li>
 					<li><a href="{{ url_for('main.findTeam') }}">找团队</a></li>
 					<li><a href="{{ url_for('main.findActivity') }}">活动</a></li>
 					<li><a href="{{ url_for('main.info_news') }}">资讯</a></li>
-					<li><a href="{{ url_for('main.person_team') }}">个人</a></li>
                </ul>
 	        </div>
 	        <div class="right">
@@ -36,23 +35,21 @@
 	</header>
 	<div class="wrap container">
 	    <ul class="bar">
-	        <li class="bar_active">新闻</li>
-	        <li>干货</li>
-	        <li>招新</li>
-	        <li>比赛</li>
+	        <li class="bar_active">最新</li>
+	        <li>最热</li>
 	    </ul>
 	    <div class="list" id="list">
 	    </div>
 	    <hr class="bot_line" />
 	    <hr class="bot_line" />
-		<div class="noMore"><img src="{{ url_for('static', filename='./image/noMore.png') }}" alt="nomore" /></div>
+	    <div class="noMore"><img src="/static/image/noMore.png" alt="nomore" /></div>
 	</div>
 	<div class="side">
          <ul>
-			 <li><a href=""><img src="{{ url_for('static', filename='./image/weixinFloat.png') }}" alt="" /></a></li>
-			 <li><a href=""><img src="{{ url_for('static', filename='./image/newsFloat.png') }}" alt="" /></a></li>
-			 <li><a href=""><img src="{{ url_for('static', filename='./image/phoneFloat.png') }}" alt="" /></a></li>
-			 <li id="getTop"><img src="{{ url_for('static', filename='./image/backTopFloat.png') }}" alt="" /></li>
+         	<li><a href=""><img src="/static/image/weixinFloat.png" alt="" /></a></li>
+         	<li><a href=""><img src="/static/image/newsFloat.png" alt="" /></a></li>
+         	<li><a href=""><img src="/static/image/phoneFloat.png" alt="" /></a></li>
+         	<li id="getTop"><img src="/static/image/backTopFloat.png" alt="" /></li>
          </ul>
 	</div>
 	<footer>
@@ -64,9 +61,9 @@
 	    	        <li><a href="">意见反馈</a></li>
 	            </ul>
 	            <ul class="f_share right">
-					<li><a href=""><img src="{{ url_for('static', filename='./image/weibo.png') }}" alt="weibo" /></a></li>
-					<li><a href=""><img src="{{ url_for('static', filename='./image/weixin.png') }}" alt="weixin" /></a></li>
-					<li><a href=""><img src="{{ url_for('static', filename='./image/qqSpace.png') }}" alt="qone" /></a></li>
+	    	        <li><a href=""><img src="/static/image/weibo.png" alt="weibo" /></a></li>
+	    	        <li><a href=""><img src="/static/image/weixin.png" alt="weixin" /></a></li>
+	    	        <li><a href=""><img src="/static/image/qqSpace.png" alt="qone" /></a></li>
 	            </ul>
 	        </div>
 	    </div>

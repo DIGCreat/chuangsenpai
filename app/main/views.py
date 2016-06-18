@@ -6,7 +6,7 @@ from ..main import main
 from .. import db
 from ..models import User, Team, Activity, Post
 from flask import render_template, jsonify, url_for, \
-        request, Response
+        request, Response, abort
 from flask.ext.login import current_user, login_required
 
 IMAGEDIR = u'/home/king/Workspace/flaskWorkspace/cspImageServer/userImages'
@@ -129,53 +129,14 @@ def serve_file(fname):
     except:
         return "", 404
 
-#活动和资讯页面的ajax请求url
-@main.route('/find/data')
-def getData():
-    flag = request.args.get('flag')
-    data1=[
-        {
-            'id':1,
-            'name':'1',
-            'lable':'basai',
-            'img': url_for('static', filename='./image/myhead.jpg'),
-            'descript':'heloo'
-        },
-        {
-            'id':2,
-            'name':'2',
-            'lable':'basai',
-            'img': url_for('static', filename='./image/myhead.jpg'),
-            'descript':'heloo'
-        },
-        {
-            'id':3,
-            'name':'3',
-            'lable':'basai',
-            'img': url_for('static', filename='./image/myhead.jpg'),
-            'descript':'heloo'
-        },
-        {
-            'id':4,
-            'name':'4',
-            'lable':'basai',
-            'img': url_for('static', filename='./image/myhead.jpg'),
-            'descript':'heloo'
-        },
-        {
-            'id':5,
-            'name':'5',
-            'lable':'basai',
-            'img': url_for('static', filename='./image/myhead.jpg'),
-            'descript':'heloo'
-        }
-    ]
-
-    if flag == 'team':
-        data = data1
-    elif flag == 'act':
-        data = ''
-    else:
-        data = ''
-
-    return jsonify(data=data)
+@main.route('/user/<username>')
+def user(username):
+    user = User.query.filter_by(username=username).first()
+    if user is None:
+        abort(404)
+    data = {"id": user.id,
+            "username": user.username,
+            "followed_num": len(user.followed.all()),
+            "followers_num": len(user.followers.all()),
+            "about_me": user.about_me}
+    return jsonify(data)

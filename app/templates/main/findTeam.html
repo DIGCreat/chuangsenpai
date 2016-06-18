@@ -3,24 +3,20 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>findTeam</title>
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='./css/base.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='./css/findTeam.css') }}">
-	<script src="{{ url_for('static', filename='./js/jquery-1.10.2.min.js') }}"></script>
-	<script type=text/javascript>
-$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
-	</script>
+	<link rel="stylesheet" type="text/css" href="/static/css/base.css">
+	<link rel="stylesheet" type="text/css" href="/static/css/findTeam.css">
+	<script src="/static/js/jquery-1.10.2.min.js"></script>
 </head>
 <body>
 	<header>
 	    <div class="header">
 	        <div class="left">
-				<div class="logo left"><a href="{{ url_for('main.index') }}"><img src="{{ url_for('static', filename='./image/logo.png') }}" alt="logo" /></a></div>
+				<div class="logo left"><a href="{{ url_for('main.index') }}"><img src="/static/image/logo.png" alt="logo" /></a></div>
                 <ul class="nav left">
 					<li><a href="{{ url_for('main.findPerson') }}">找人</a></li>
 					<li><a href="{{ url_for('main.findTeam') }}">找团队</a></li>
 					<li><a href="{{ url_for('main.findActivity') }}">活动</a></li>
 					<li><a href="{{ url_for('main.info_news') }}">资讯</a></li>
-					<li><a href="{{ url_for('main.person_team') }}">个人</a></li>
                </ul>
 	        </div>
 	        <div class="right">
@@ -98,7 +94,7 @@ $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
 	        	        </div>
 	        	    </div>
 	        	    <div class="background">
-						<img src="{{ url_for('static', filename='./image/myhead.jpg') }}" alt="user" />
+	        	        <img src="/static/image/myhead.jpg" alt="user" />
 	        	        <p class="name">巴塞罗那</p>
 	        	        <p class="career">欧冠足球队</p>
 	        	    </div>
@@ -112,10 +108,10 @@ $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
 	</div>
 	<div class="side">
          <ul>
-			 <li><a href=""><img src="{{ url_for('static', filename='./image/weixinFloat.png') }}" alt="" /></a></li>
-			 <li><a href=""><img src="{{ url_for('static', filename='./image/newsFloat.png') }}" alt="" /></a></li>
-			 <li><a href=""><img src="{{ url_for('static', filename='./image/phoneFloat.png') }}" alt="" /></a></li>
-			 <li id="getTop"><img src="{{ url_for('static', filename='./image/backTopFloat.png') }}" alt="" /></li>
+         	<li><a href=""><img src="/static/image/weixinFloat.png" alt="" /></a></li>
+         	<li><a href=""><img src="/static/image/newsFloat.png" alt="" /></a></li>
+         	<li><a href=""><img src="/static/image/phoneFloat.png" alt="" /></a></li>
+         	<li id="getTop"><img src="/static/image/backTopFloat.png" alt="" /></li>
          </ul>
 	</div>
 	<footer>
@@ -127,13 +123,14 @@ $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
 	    	        <li><a href="">意见反馈</a></li>
 	            </ul>
 	            <ul class="f_share right">
-					<li><a href=""><img src="{{ url_for('static', filename='./image/weibo.png') }}" alt="weibo" /></a></li>
-					<li><a href=""><img src="{{ url_for('static', filename='./image/weixin.png') }}" alt="weixin" /></a></li>
-					<li><a href=""><img src="{{ url_for('static', filename='./image/qqSpace.png') }}" alt="qone" /></a></li>
+	    	        <li><a href=""><img src="/static/image/weibo.png" alt="weibo" /></a></li>
+	    	        <li><a href=""><img src="/static/image/weixin.png" alt="weixin" /></a></li>
+	    	        <li><a href=""><img src="/static/image/qqSpace.png" alt="qone" /></a></li>
 	            </ul>
 	        </div>
 	    </div>
 	</footer>
-	<script type="text/javascript" src="{{ url_for('static', filename='./js/findTeam.js') }}"></script>
+	<script type="text/javascript" src="/static/js/findTeam.js"></script>
+	<script type="text/javascript" src="/static/js/common.js"></script>
 </body>
 </html>

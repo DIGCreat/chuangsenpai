@@ -18,6 +18,7 @@ def make_shell_context():
                 HaveSkill=models.HaveSkill,
                 CollectPost=models.CollectPost,
                 Post=models.Post, Permission=models.Permission,
+                Team=models.Team
                 )
 
 manager.add_command('shell', Shell(make_context=make_shell_context))

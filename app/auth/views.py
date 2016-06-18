@@ -81,12 +81,13 @@ def createTeam():
     team_name = request.form.get('team_name')
     team_avatar = request.form.get('img')
     about_team = request.form.get('des')
+    print team_name, team_avatar, about_team
     if not Team.query.filter_by(team_name=team_name).first():
-        team = Team()
-        team.about_team = about_team
-        team.team_avatar = team_avatar
-        team.team_name = team_name
-        team.sponsor = current_user
+        team = Team(team_name=team_name,
+                    about_team=about_team,
+                    team_avatar=team_avatar)
+        print type(team)
+        print current_user.email
         db.session.add(team)
         return jsonify({"success":0, "error":0})
     else:

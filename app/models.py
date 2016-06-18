@@ -193,6 +193,9 @@ class Team(db.Model):
                                lazy='dynamic',
                                cascade="all, delete-orphan")
 
+    def __repr__(self):
+        return '<team %r>' % self.team_name
+
 class User(UserMixin, db.Model):
 #    '''
 #    用户模型，用email作为注册帐号，用email和username都可以登陆
